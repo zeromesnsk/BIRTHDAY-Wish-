@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday </title>
+  
+  <!-- Open Graph Metadata for Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Happy Birthday Anannya">
+  <meta property="og:description" content="A heartfelt celebration page created just for Anannya on this special day. Filled with joy, memories, and best wishes for a wonderful year ahead!">
+  <meta property="og:image" content="https://cdn.glitch.global/25e9b6ae-298f-4810-ae95-679830315a31/5.gif?v=1730317143720"> <!-- Link to the cake GIF image -->
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
+  <style>
+     /* Basic styles for black background and crosshair cursor */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(145deg, #0f0f33, #0a0a2e);
+    color: #ffddcc;
+    font-family: 'Georgia', serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+body, .wrap p {
+    font-family: 'Noto Sans Bengali', sans-serif;
+}
+canvas {
+      cursor: crosshair;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    /* Star background */
+.star-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(20,20,50,0.9), transparent);
+    overflow: hidden;
+    z-index: -2;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff, 0 0 20px #ff77aa;
+    animation: blink 2s infinite alternate;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+#musicPlayButton {
+display: none; /* Initially hidden */
+position: absolute;
+top: 20px;
+right: 20px;
+padding: 10px 25px;
+font-size: 1rem;
+font-weight: bold;
+color: #fff;
+background: linear-gradient(135deg, #1e3c72, #2a5298, #1e3c72);
+border: 2px solid #4a90e2;
+border-radius: 30px;
+cursor: pointer;
+outline: none;
+box-shadow: 0 0 15px rgba(0, 172, 255, 0.7), 0 0 20px rgba(0, 172, 255, 0.4);
+transition: background 0.5s, transform 0.2s ease-in-out, box-shadow 0.5s ease-in-out;
+animation: pulse 2s infinite;
+}
+
+#musicPlayButton:hover {
+background: linear-gradient(135deg, #2a5298, #1e3c72, #2a5298);
+box-shadow: 0 0 20px rgba(0, 172, 255, 1), 0 0 30px rgba(0, 172, 255, 0.7);
+transform: scale(1.1);
+}
+
+#musicPlayButton:active {
+transform: scale(0.95);
+}
+
+@keyframes pulse {
+0%, 100% {
+box-shadow: 0 0 15px rgba(0, 172, 255, 0.7), 0 0 20px rgba(0, 172, 255, 0.4);
+}
+50% {
+box-shadow: 0 0 25px rgba(0, 172, 255, 1), 0 0 30px rgba(0, 172, 255, 0.7);
+}
+}
+.container {
+    text-align: center;
+    position: relative;
+    max-width: 800px;
+    padding: 40px;
+    background: linear-gradient(145deg, rgba(20, 20, 50, 0.7), rgba(10, 10, 40, 0.7));
+    border-radius: 20px;
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.8), 0 0 50px #ff77aa;
+}
+
+.birthday-greeting {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ff8b42;
+    background: linear-gradient(45deg, #ff8b42, #ffe800, #ff3d81, #42e9f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    padding: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    animation: glow 1.5s ease-in-out infinite alternate, bounce 2s infinite, colorShift 10s infinite;
+    box-shadow: 0 4px 15px rgba(255, 72, 100, 0.3), 0 -4px 10px rgba(100, 200, 255, 0.3);
+}
+
+/* Glow animation */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ff8b42, 0 0 10px #ffe800, 0 0 20px #ff3d81, 0 0 40px #42e9f5;
+    }
+    100% {
+        text-shadow: 0 0 10px #ff8b42, 0 0 20px #ffe800, 0 0 30px #ff3d81, 0 0 50px #42e9f5;
+    }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Gradient color shift animation */
+@keyframes colorShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.birthday-greeting::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 70%);
+    border-radius: 8px;
+    animation: pulse 2.5s infinite alternate;
+}
+
+/* Pulsing background animation */
+@keyframes pulse {
+    0% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.profile-img {
+width: 160px;
+height: 160px;
+border-radius: 50%;
+margin: 25px auto;
+border: 5px solid #ff77aa;
+box-shadow: 0 0 40px #ff77aa, 0 0 50px #ff77aa, 0 0 70px rgba(255, 119, 170, 0.5);
+display: none;
+animation: pulse 2s infinite, rotate 10s linear infinite, glow 3s ease-in-out infinite;
+transition: transform 0.3s ease-in-out;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+0%, 100% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1);
+}
+}
+
+/* Rotate animation for a continuous spin effect */
+@keyframes rotate {
+from {
+transform: rotate(0deg);
+}
+to {
+transform: rotate(360deg);
+}
+}
+
+/* Glow animation with an expanding aura effect */
+@keyframes glow {
+0%, 100% {
+box-shadow: 0 0 40px #ff77aa, 0 0 50px #ff77aa, 0 0 70px rgba(255, 119, 170, 0.5);
+}
+50% {
+box-shadow: 0 0 60px #ff77aa, 0 0 80px #ff77aa, 0 0 100px rgba(255, 119, 170, 0.7);
+}
+}
+
+/* Hover effect with a futuristic scale and color shift */
+.profile-img:hover {
+transform: scale(1.1) rotate(10deg);
+border-color: #00ffcc;
+box-shadow: 0 0 50px #00ffcc, 0 0 60px #00ffcc, 0 0 80px rgba(0, 255, 204, 0.7);
+}
+
+.deface {
+    font-size: 2rem; /* Adjust font size for better visibility */
+    color: #ff77aa; /* Futuristic color */
+    text-shadow: 
+        0 0 10px rgba(255, 119, 170, 0.7), 
+        0 0 20px rgba(255, 119, 170, 0.5), 
+        0 0 30px rgba(255, 119, 170, 0.4);
+    position: relative;
+    display: inline-block;
+    animation: glitch 3s infinite alternate; /* Glitch animation */
+    overflow: hidden; /* Prevent overflow for pseudo-elements */
+}
+
+/* Create pseudo-elements for additional glitch layers */
+.deface::before,
+.deface::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: #ff88cc; /* Lighter color for the glitch effect */
+    opacity: 0.7;
+    clip: rect(0, 900px, 0, 0);
+}
+
+/* Glitch Effect Layers */
+.deface::before {
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+    left: -2px;
+    text-shadow: -2px 2px #ff44bb, -4px -4px #ff77aa;
+}
+
+.deface::after {
+    animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+    left: 2px;
+    text-shadow: 4px 4px #ff88dd, -2px -2px #ff44bb;
+}
+
+/* Keyframes for Glitch Shift */
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-4px, -2px); }
+    60% { transform: translate(2px, -4px); }
+    80% { transform: translate(4px, 4px); }
+    100% { transform: translate(-2px, 2px); }
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(0, 900px, 0, 0); }
+    25% { clip: rect(4px, 900px, 0, 0); }
+    50% { clip: rect(8px, 900px, 0, 0); }
+    75% { clip: rect(12px, 900px, 0, 0); }
+    100% { clip: rect(16px, 900px, 0, 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip: rect(12px, 900px, 0, 0); }
+    25% { clip: rect(8px, 900px, 0, 0); }
+    50% { clip: rect(4px, 900px, 0, 0); }
+    75% { clip: rect(0, 900px, 0, 0); }
+    100% { clip: rect(12px, 900px, 0, 0); }
+}
+
+/* Additional Animation for Pulsating Effect */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Optional hover effect */
+.deface:hover {
+    animation: pulse 1s infinite; /* Pulse on hover */
+    color: #ff88cc; /* Change color on hover */
+    text-shadow: 
+        0 0 20px rgba(255, 119, 170, 0.7), 
+        0 0 30px rgba(255, 119, 170, 0.5);
+}
+
+#fullImgPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    backdrop-filter: blur(10px); /* Add blur for a futuristic feel */
+    animation: fadeIn 0.6s ease-in-out; /* Fade-in animation */
+}
+
+#fullImg {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 15px;
+    box-shadow: 0 0 25px #ff77aa, 0 0 50px #77aaff; /* Add multiple shadows for a glow effect */
+    transform: scale(0.9); /* Initial scale */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smooth animation */
+}
+
+/* Zoom and glow effect on hover */
+#fullImg:hover {
+    transform: scale(1);
+    box-shadow: 0 0 30px #ff77aa, 0 0 60px #77aaff, 0 0 90px #55ffaa;
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.cake-gif-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    animation: fadeIn 1.5s ease-out, slideIn 1s ease-out; /* Added slide-in animation */
+}
+
+/* Advanced bounce animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px) scale(1.1); /* Slightly scale up for effect */
+    }
+}
+
+.cake-gif {
+    width: 140px;
+    max-width: 90%;
+    animation: 
+        bounce 1.5s infinite alternate, 
+        cakeGlow 1.5s infinite alternate;
+    box-shadow: 0 0 20px #ff88cc, 0 0 40px #ff77aa; /* Glow effect */
+}
+
+/* Glow effect for cake GIF */
+@keyframes cakeGlow {
+    0% {
+        filter: brightness(1);
+    }
+    100% {
+        filter: brightness(1.2); /* Pulsating glow effect */
+    }
+}
+.wrap p {
+    font-size: 16px; /* Adjust as needed */
+    line-height: 1.5; /* Increase to make text more readable */
+    color: #fff; /* For better visibility on dark backgrounds */
+    text-align: center;
+}
+
+/* Typing text */
+#typed {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #ffe800;
+    background: linear-gradient(90deg, #ff8b42, #ffe800, #42e9f5, #ff3d81, #ffe800);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 5s infinite ease, bounceText 2s infinite ease-in-out;
+    text-shadow: 0 0 10px rgba(255, 140, 70, 0.6), 0 0 20px rgba(255, 100, 255, 0.4), 0 0 30px rgba(70, 255, 220, 0.3);
+    letter-spacing: 1px;
+    white-space: pre-wrap;
+}
+
+/* Gradient color shift animation */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Bounce text animation */
+@keyframes bounceText {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Typing cursor effect */
+#typed::after {
+    content: "|";
+    font-weight: bold;
+    margin-left: 4px;
+    color: #ff3d81;
+    animation: blink 0.8s steps(1) infinite;
+}
+
+/* Cursor blink animation */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+.wish {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ff3d81;
+    background: linear-gradient(45deg, #ff3d81, #ffe800, #42e9f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGlow 1.5s ease-in-out infinite alternate, textBounce 2s infinite ease-in-out;
+    text-shadow: 0 0 5px rgba(255, 61, 129, 0.6), 0 0 15px rgba(255, 100, 200, 0.4);
+    padding: 10px 20px;
+    border-radius: 10px;
+    letter-spacing: 1.2px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Text Glow Animation */
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 61, 129, 0.5), 0 0 20px rgba(255, 61, 129, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 61, 129, 0.7), 0 0 30px rgba(255, 255, 120, 0.6);
+    }
+}
+
+/* Bounce Animation */
+@keyframes textBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+.surprise-btn {
+    margin-top: 30px;
+    padding: 14px 26px;
+    background: linear-gradient(145deg, #ff88cc, #ff6699);
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    border-radius: 15px;
+    box-shadow: 0 8px #ff4477;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.surprise-btn:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px #ff4477, 0 0 15px #ff88cc;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    background: radial-gradient(circle at center, rgba(255, 102, 153, 0.3), transparent 70%);
+}
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: rise 5s infinite ease-in;
+}
+
+.balloon-shape {
+    width: 30px;
+    height: 40px;
+    background-color: #ff6699;
+    border-radius: 50%;
+    position: relative;
+    animation: floatBalloon 3s infinite ease-in-out;
+}
+
+.balloon-string {
+    width: 2px;
+    height: 50px;
+    background: #ff88cc;
+    margin-top: -10px;
+    border-radius: 1px;
+}
+
+.firework {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: riseAndFade 1.5s ease-out;
+}
+
+/* Keyframes for animation effects */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 10px #ff6699, 0 0 20px #ff6699; }
+    100% { text-shadow: 0 0 30px #ff6699, 0 0 40px #ff6699; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes floatBalloon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes rise {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+@keyframes riseAndFade {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-80px); opacity: 0; }
+}
+.footer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s ease-in-out;
+}
+
+.footer-text {
+    font-family: 'Orbitron', sans-serif;
+    color: #00ffcc;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.5);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(0, 255, 255, 1), 0 0 30px rgba(0, 255, 255, 0.7);
+    }
+}
+
+.creator-info {
+    font-size: 1rem;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    padding: 10px;
+    color: #ffffff;
+    margin: -20px auto;
+}
+
+.made-by {
+    color: #ffffff;
+    animation: fadeColor 3s ease-in-out infinite;
+}
+
+@keyframes fadeColor {
+    0%, 100% { color: #ffffff; }
+    50% { color: #ff6ec7; }
+}
+
+.creator-info a {
+    font-weight: bold;
+    text-decoration: none;
+    background: linear-gradient(45deg, #ff6ec7, #ffd200, #6a00ff, #00d4ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: colorShift 5s linear infinite;
+}
+
+@keyframes colorShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+
+    h1.birthday-greeting {
+        font-size: 1.8rem;
+    }
+
+    .deface{
+        font-size: 1rem;
+    }
+      .wish {
+        font-size: 1.1rem;
+      padding-top: 20px;
+    }
+
+    .wrap, #typed {
+        font-size: 1.5rem;
+    }
+
+    .surprise-btn {
+        padding: 12px 25px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile devices (480px and below) */
+@media (max-width: 480px) {
+    .container {
+        max-width: 95%;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    h1.birthday-greeting {
+        font-size: 1.5rem;
+    }
+
+    .deface{
+        font-size: 1rem;
+    }
+      .wish {
+        font-size: 1.1rem;
+      padding-top: 20px;
+    }
+
+    .wrap, #typed {
+        font-size: 1.3rem;
+    }
+
+    .surprise-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    #fullImgPopup {
+        display: none;
+    }
+}
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <div class="star-bg"></div>
+  <!-- Auto-playing Background Music -->
+  <audio id="backgroundMusic" autoplay loop>
+    <source src="https://cdn.glitch.global/25e9b6ae-298f-4810-ae95-679830315a31/hbd.mp3?v=1730232252057" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+  <!-- Fallback Music Button -->
+  <button id="musicPlayButton" onclick="playMusic()" style="display:none; position: absolute; top: 20px; right: 20px; padding: 10px 20px; font-size: 1rem;">
+    Play Music 🎶
+</button>
+<div class="container">
+    <h1 class="birthday-greeting">
+      Happy Birthday 
+   🎂 Ali Ajgor Alahi 🍰
+   </h1>
+  
+    <!-- Full image popup -->
+    <div id="fullImgPopup" onclick="hideFullImage()">
+        <img id="fullImg" src="alahi1.jpg" alt="Full Image">
+    </div>       
+    <img src="alahi.jpg" alt="" class="profile-img" id="profileImg" onclick="showFullImage()">
+    <p class="deface">You have been cyber-defaced with love and happiness!</p>
+
+    <div class="cake-gif-container">
+        <img src="https://cdn.glitch.global/25e9b6ae-298f-4810-ae95-679830315a31/5.gif?v=1730317143720" alt="Birthday Cake" class="cake-gif">
+    </div>
+    <div class="wrap">
+        <div id="typed-strings">
+            <p>আজ দিনটা...</p>
+            <p>অন্যান্য দিনের মতোই সুন্দর</p>
+            <p>কিন্তু তুমি বুঝতে পারো</p>
+            <p>আরও একটি বছর পার হয়ে গেল</p>
+            <p>এক পলকের মধ্যেই</p>
+            <p><strong>তবুও</strong></p>
+            <p>তুমি জানো কি..?</p>
+            <p>আজকের দিনটা বিশেষ</p>
+            <p>তোমার জন্য খুবই বিশেষ</p>
+            <p>এই কারণেই</p>
+            <p>চলো, এটাকে...</p>
+            <p>সেরা উদযাপন করি</p>
+            <p>আর তোমার সাথে ভাগ করে নিই...</p>
+            <p>একটুখানি সুখ</p>
+            <p>আমি সবকিছু তৈরি করেছি...</p>
+            <p>তোমার জন্য জন্মদিনের উপহার হিসেবে</p>
+            <p>ধন্যবাদ পাশে থাকার জন্য</p>
+            <p>ধন্যবাদ আমাদের বন্ধুত্বের জন্য</p>
+            <p>আমাদের সম্পর্কের জন্য</p>
+            <p>সবকিছুর জন্য ধন্যবাদ</p>
+            <p>তোমার জন্য আমার শুভকামনা</p>
+            <p>তোমার জীবন সহজ হোক</p>
+            <p>তোমার সব স্বপ্ন পূর্ণ হোক</p>
+            <p>মনে রেখো</p>
+            <p>তোমার লক্ষ্যগুলো</p>
+            <p>তুমি এক মুক্ত পাখির মতো...</p>
+            <p>নীল আকাশে উড়ছো</p>
+            <p>এখন অনেক কিছু বদলে গেছে...</p>
+            <p>তোমার জীবনের সত্যিকারের গল্প</p>
+            <p>শুরু হতে চলেছে</p>
+            <p>নিশ্চয়ই..</p>
+            <p>কিন্তু...</p>
+            <p>চিন্তা কোরো না</p>
+            <p>কারণ...</p>
+            <p>এই বছরটা আরও ভালো হবে</p>
+            <p>আর আমি আশা করি</p>
+            <p>তুমি খুঁজে পাবে...</p>
+            <p>পথে চলতে চলতে সুখ</p>
+            <p>তোমার মনোবল ধরে রাখো</p>
+            <p>আজকের প্রতিটি মুহূর্ত উপভোগ করো...</p>
+            <p>তোমার সুন্দর হাসি দিয়ে</p>
+            <p>এটাকে সেরা স্মৃতি বানাও...</p>
+            <p>সবশেষে...</p>
+            <p>আমি তোমাকে আবারও</p>
+            <p>শুভ জন্মদিনের শুভেচ্ছা জানাই</p>            
+        </div>
+        <span id="typed" style="white-space:pre;"></span>
+    </div>
+<div>
+    <button class="surprise-btn" onclick="showImageAndFireworks()">Click for a Surprise! 🎇</button>
+    <p class="wish">Wishing you a fantastic year ahead!</p>
+    <div class="creator-info">
+    <p><span class="made-by">Made By</span> <a href="https://rnasaks.netlify.app/" target="_blank">Apurbo Sarker (Rnasaks)</a></p>
+   </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.1.2/dist/confetti.browser.min.js"></script>
+    <script>
+	var end = Date.now() + (5 * 1000);
+	// go Buckeyes!
+	var colors = ['#000', '#ff0000', '#f3f3f3'];
+	(function frame() {
+		confetti({
+			particleCount: 2,
+			angle: 60,
+			spread: 55,
+			origin: {
+				x: 0
+			},
+			colors: colors
+		});
+		confetti({
+			particleCount: 3,
+			angle: 120,
+			spread: 55,
+			origin: {
+				x: 1
+			},
+			colors: colors
+		});
+		if (Date.now() < end) {
+			requestAnimationFrame(frame);
+		}
+	}());
+
+    // when animating on canvas, it is best to use requestAnimationFrame instead of setTimeout or setInterval
+// not supported in all browsers though and sometimes needs a prefix, so we need a shim
+window.requestAnimFrame = ( function() {
+	return window.requestAnimationFrame ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame ||
+				function( callback ) {
+					window.setTimeout( callback, 1000 / 60 );
+				};
+})();
+
+// now we will setup our basic variables for the demo
+var canvas = document.getElementById( 'canvas' ),
+		ctx = canvas.getContext( '2d' ),
+		// full screen dimensions
+		cw = window.innerWidth,
+		ch = window.innerHeight,
+		// firework collection
+		fireworks = [],
+		// particle collection
+		particles = [],
+		// starting hue
+		hue = 120,
+		// when launching fireworks with a click, too many get launched at once without a limiter, one launch per 5 loop ticks
+		limiterTotal = 5,
+		limiterTick = 0,
+		// this will time the auto launches of fireworks, one launch per 80 loop ticks
+		timerTotal = 80,
+		timerTick = 0,
+		mousedown = false,
+		// mouse x coordinate,
+		mx,
+		// mouse y coordinate
+		my;
+		
+// set canvas dimensions
+canvas.width = cw;
+canvas.height = ch;
+
+// now we are going to setup our function placeholders for the entire demo
+
+// get a random number within a range
+function random( min, max ) {
+	return Math.random() * ( max - min ) + min;
+}
+
+// calculate the distance between two points
+function calculateDistance( p1x, p1y, p2x, p2y ) {
+	var xDistance = p1x - p2x,
+			yDistance = p1y - p2y;
+	return Math.sqrt( Math.pow( xDistance, 2 ) + Math.pow( yDistance, 2 ) );
+}
+
+// create firework
+function Firework( sx, sy, tx, ty ) {
+	// actual coordinates
+	this.x = sx;
+	this.y = sy;
+	// starting coordinates
+	this.sx = sx;
+	this.sy = sy;
+	// target coordinates
+	this.tx = tx;
+	this.ty = ty;
+	// distance from starting point to target
+	this.distanceToTarget = calculateDistance( sx, sy, tx, ty );
+	this.distanceTraveled = 0;
+	// track the past coordinates of each firework to create a trail effect, increase the coordinate count to create more prominent trails
+	this.coordinates = [];
+	this.coordinateCount = 3;
+	// populate initial coordinate collection with the current coordinates
+	while( this.coordinateCount-- ) {
+		this.coordinates.push( [ this.x, this.y ] );
+	}
+	this.angle = Math.atan2( ty - sy, tx - sx );
+	this.speed = 2;
+	this.acceleration = 1.05;
+	this.brightness = random( 50, 70 );
+	// circle target indicator radius
+	this.targetRadius = 1;
+}
+
+// update firework
+Firework.prototype.update = function( index ) {
+	// remove last item in coordinates array
+	this.coordinates.pop();
+	// add current coordinates to the start of the array
+	this.coordinates.unshift( [ this.x, this.y ] );
+	
+	// cycle the circle target indicator radius
+	if( this.targetRadius < 8 ) {
+		this.targetRadius += 0.3;
+	} else {
+		this.targetRadius = 1;
+	}
+	
+	// speed up the firework
+	this.speed *= this.acceleration;
+	
+	// get the current velocities based on angle and speed
+	var vx = Math.cos( this.angle ) * this.speed,
+			vy = Math.sin( this.angle ) * this.speed;
+	// how far will the firework have traveled with velocities applied?
+	this.distanceTraveled = calculateDistance( this.sx, this.sy, this.x + vx, this.y + vy );
+	
+	// if the distance traveled, including velocities, is greater than the initial distance to the target, then the target has been reached
+	if( this.distanceTraveled >= this.distanceToTarget ) {
+		createParticles( this.tx, this.ty );
+		// remove the firework, use the index passed into the update function to determine which to remove
+		fireworks.splice( index, 1 );
+	} else {
+		// target not reached, keep traveling
+		this.x += vx;
+		this.y += vy;
+	}
+}
+
+// draw firework
+Firework.prototype.draw = function() {
+	ctx.beginPath();
+	// move to the last tracked coordinate in the set, then draw a line to the current x and y
+	ctx.moveTo( this.coordinates[ this.coordinates.length - 1][ 0 ], this.coordinates[ this.coordinates.length - 1][ 1 ] );
+	ctx.lineTo( this.x, this.y );
+	ctx.strokeStyle = 'hsl(' + hue + ', 100%, ' + this.brightness + '%)';
+	ctx.stroke();
+	
+	ctx.beginPath();
+	// draw the target for this firework with a pulsing circle
+	ctx.arc( this.tx, this.ty, this.targetRadius, 0, Math.PI * 2 );
+	ctx.stroke();
+}
+
+// create particle
+function Particle( x, y ) {
+	this.x = x;
+	this.y = y;
+	// track the past coordinates of each particle to create a trail effect, increase the coordinate count to create more prominent trails
+	this.coordinates = [];
+	this.coordinateCount = 5;
+	while( this.coordinateCount-- ) {
+		this.coordinates.push( [ this.x, this.y ] );
+	}
+	// set a random angle in all possible directions, in radians
+	this.angle = random( 0, Math.PI * 2 );
+	this.speed = random( 1, 10 );
+	// friction will slow the particle down
+	this.friction = 0.95;
+	// gravity will be applied and pull the particle down
+	this.gravity = 1;
+	// set the hue to a random number +-20 of the overall hue variable
+	this.hue = random( hue - 20, hue + 20 );
+	this.brightness = random( 50, 80 );
+	this.alpha = 1;
+	// set how fast the particle fades out
+	this.decay = random( 0.015, 0.03 );
+}
+
+// update particle
+Particle.prototype.update = function( index ) {
+	// remove last item in coordinates array
+	this.coordinates.pop();
+	// add current coordinates to the start of the array
+	this.coordinates.unshift( [ this.x, this.y ] );
+	// slow down the particle
+	this.speed *= this.friction;
+	// apply velocity
+	this.x += Math.cos( this.angle ) * this.speed;
+	this.y += Math.sin( this.angle ) * this.speed + this.gravity;
+	// fade out the particle
+	this.alpha -= this.decay;
+	
+	// remove the particle once the alpha is low enough, based on the passed in index
+	if( this.alpha <= this.decay ) {
+		particles.splice( index, 1 );
+	}
+}
+
+
+
+// draw particle
+Particle.prototype.draw = function() {
+	  
+  ctx. beginPath();
+	// move to the last tracked coordinates in the set, then draw a line to the current x and y
+	ctx.moveTo( this.coordinates[ this.coordinates.length - 1 ][ 0 ], this.coordinates[ this.coordinates.length - 1 ][ 1 ] );
+	ctx.lineTo( this.x, this.y );
+	ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
+	ctx.stroke();
+  
+  
+}
+
+// create particle group/explosion
+function createParticles( x, y ) {
+	// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
+	var particleCount = 30;
+	while( particleCount-- ) {
+		particles.push( new Particle( x, y ) );
+	}
+}
+
+// main demo loop
+function loop() {
+	// this function will run endlessly with requestAnimationFrame
+	requestAnimFrame( loop );
+	
+	// increase the hue to get different colored fireworks over time
+	hue += 0.5;
+	
+	// normally, clearRect() would be used to clear the canvas
+	// we want to create a trailing effect though
+	// setting the composite operation to destination-out will allow us to clear the canvas at a specific opacity, rather than wiping it entirely
+	ctx.globalCompositeOperation = 'destination-out';
+	// decrease the alpha property to create more prominent trails
+	ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+	ctx.fillRect( 0, 0, cw, ch );
+	// change the composite operation back to our main mode
+	// lighter creates bright highlight points as the fireworks and particles overlap each other
+	ctx.globalCompositeOperation = 'lighter';
+	
+    var text = "";  
+  ctx.font = "50px sans-serif";
+  var textData = ctx.measureText(text);
+  ctx.fillStyle = "rgba("+parseInt(random(0,255))+","+parseInt(random(0,255))+","+parseInt(random(0,255))+",0.3)";
+  ctx.fillText(text,cw /2-textData.width/2,ch/2); 
+  
+	// loop over each firework, draw it, update it
+	var i = fireworks.length;
+	while( i-- ) {
+		fireworks[ i ].draw();
+		fireworks[ i ].update( i );
+	}
+	
+	// loop over each particle, draw it, update it
+	var i = particles.length;
+	while( i-- ) {
+		particles[ i ].draw();
+		particles[ i ].update( i );
+	}
+	
+	// launch fireworks automatically to random coordinates, when the mouse isn't down
+	if( timerTick >= timerTotal ) {
+		if( !mousedown ) {
+			// start the firework at the bottom middle of the screen, then set the random target coordinates, the random y coordinates will be set within the range of the top half of the screen
+      
+      for(var h=0;h<50;h++)
+      {
+           fireworks.push( new Firework( cw / 2, ch/2, random( 0, cw ), random( 0, ch  ) ) );
+      }
+      
+      
+			timerTick = 0;
+		}
+	} else {
+		timerTick++;
+	}
+	
+	// limit the rate at which fireworks get launched when mouse is down
+	if( limiterTick >= limiterTotal ) {
+		if( mousedown ) {
+			// start the firework at the bottom middle of the screen, then set the current mouse coordinates as the target
+			fireworks.push( new Firework( cw / 2, ch/2, mx, my ) );
+			limiterTick = 0;
+		}
+	} else {
+		limiterTick++;
+	}
+}
+
+// mouse event bindings
+// update the mouse coordinates on mousemove
+canvas.addEventListener( 'mousemove', function( e ) {
+	mx = e.pageX - canvas.offsetLeft;
+	my = e.pageY - canvas.offsetTop;
+});
+
+// toggle mousedown state and prevent canvas from being selected
+canvas.addEventListener( 'mousedown', function( e ) {
+	e.preventDefault();
+	mousedown = true;
+});
+
+canvas.addEventListener( 'mouseup', function( e ) {
+	e.preventDefault();
+	mousedown = false;
+});
+
+// once the window loads, we are ready for some fireworks!
+window.onload = loop;
+
+document.addEventListener('DOMContentLoaded', function() {
+    const typed = new Typed('#typed', {
+        stringsElement: '#typed-strings',
+        typeSpeed: 50,
+        backSpeed: 30,
+        loop: false,
+    });
+
+    // Launch balloons on page load
+    launchBalloons();
+
+    // Try to autoplay the audio
+    const audio = document.getElementById('backgroundMusic');
+    const playButton = document.getElementById('musicPlayButton');
+
+    // Check if audio can autoplay, if not show the play button
+    audio.play().catch(() => {
+        playButton.style.display = 'block';
+    });
+});
+
+// Function to play music on button click
+function playMusic() {
+    const audio = document.getElementById('backgroundMusic');
+    const playButton = document.getElementById('musicPlayButton');
+    audio.play().then(() => {
+        playButton.style.display = 'none'; // Hide button if playback starts successfully
+    }).catch((error) => {
+        console.error("Error playing music:", error);
+    });
+}
+
+
+function launchBalloons() {
+const colors = ['#ff6699', '#ff88cc', '#ffaaff', '#ffccdd', '#a0c4ff', '#ffadad', '#ffd6a5', '#caffbf'];
+for (let i = 0; i < 50; i++) {
+const balloon = document.createElement('div');
+balloon.classList.add('balloon');
+balloon.style.left = `${Math.random() * 100}vw`;
+balloon.style.animationDuration = `${2 + Math.random() * 2}s`;
+balloon.style.transform = `scale(${0.7 + Math.random() * 0.5}) rotate(${Math.random() * 15}deg)`;
+
+const balloonShape = document.createElement('div');
+balloonShape.classList.add('balloon-shape');
+balloonShape.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+balloonShape.style.boxShadow = `0px 0px 10px ${balloonShape.style.backgroundColor}`;
+
+const balloonString = document.createElement('div');
+balloonString.classList.add('balloon-string');
+
+balloon.appendChild(balloonShape);
+balloon.appendChild(balloonString);
+
+document.body.appendChild(balloon);
+setTimeout(() => balloon.remove(), 5000);
+}
+}
+
+// Show Full Image Function
+function showFullImage() {
+    document.getElementById('fullImgPopup').style.display = 'flex';
+}
+
+// Hide Full Image Function
+function hideFullImage() {
+    document.getElementById('fullImgPopup').style.display = 'none';
+}
+
+function showImageAndFireworks() {
+    document.getElementById('profileImg').style.display = 'block';
+    launchFireworks();
+}
+
+function launchFireworks() {
+    const surpriseText = document.querySelector('.wish');
+    surpriseText.innerHTML = 'Heart for You! 💖❤️';
+    for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            firework.style.left = `${Math.random() * 100}vw`;
+            firework.style.top = `${Math.random() * 100}vh`;
+            firework.innerHTML = '💖❤️';
+            document.body.appendChild(firework);
+            setTimeout(() => firework.remove(), 1500);
+        }, i * 200);
+    }
+}
+
+// Add random stars to the background
+function createStars() {
+    const starBg = document.querySelector('.star-bg');
+    for (let i = 0; i < 200; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.width = `${Math.random() * 2 + 1}px`;
+        star.style.height = star.style.width;
+        star.style.top = `${Math.random() * 100}vh`;
+        star.style.left = `${Math.random() * 100}vw`;
+        starBg.appendChild(star);
+    }
+}
+createStars();
+</script>
+</body>
+</html>
